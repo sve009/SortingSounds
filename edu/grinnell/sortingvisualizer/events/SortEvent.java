@@ -1,7 +1,9 @@
-package edu.grinnell.sortingvisualization.events;
+package edu.grinnell.sortingvisualizer.events;
+
+import java.util.List;
 
 public interface SortEvent<T> {
-    public void apply(arr);
+    public void apply(T[] arr);
 
     public List<Integer> getAffectedIndices();
 
