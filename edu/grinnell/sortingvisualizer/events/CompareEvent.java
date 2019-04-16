@@ -1,10 +1,11 @@
 package edu.grinnell.sortingvisualization.events;
 
-public class CompareEvent<T> implements SortEvent<T> {
+import java.util.List;
 
+public class CompareEvent<T> implements SortEvent<T> {
     public List<Integer> affectedIndices;
 
-    public CompareEvent<T>(List<Integer> affectedIndices) {
+    public CompareEvent(List<Integer> affectedIndices) {
        this.affectedIndices = affectedIndices;
     } 
 
