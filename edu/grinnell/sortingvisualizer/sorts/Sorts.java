@@ -66,7 +66,7 @@ public class Sorts {
       compareIndices.add(index - 1);
       events.add(new CompareEvent<T>(compareIndices));
 
-      while (temp.compareTo(arr[index - 1]) < 0 && index >= 1) {
+      while (index >= 1 && temp.compareTo(arr[index - 1]) < 0) {
         compareIndices = new ArrayList<Integer>();
         compareIndices.add(index);
         compareIndices.add(index - 1);
@@ -145,7 +145,7 @@ public class Sorts {
       copy[i++] = arr[rightP];
     }
     for (int j = 0; j < (ub - lb); j++) {
-      events.add(new CopyEvent<T>((lb + j)));
+      //events.add(new CopyEvent<T>((lb + j)));
       arr[lb + j] = copy[j];
     } // for
 
