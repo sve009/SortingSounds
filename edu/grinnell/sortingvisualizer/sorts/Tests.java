@@ -30,13 +30,11 @@ public class Tests {
         Sorts.insertionSort(arr1);
         printArray(arr1, pen);
 
-
         pen.println("Array 2: ");
         printArray(arr2, pen);
         pen.println("Sorted: ");
         Sorts.insertionSort(arr2);
         printArray(arr2, pen);
-
 
         pen.println("Array 3: ");
         printArray(arr3, pen);
@@ -76,13 +74,11 @@ public class Tests {
         Sorts.quickSort(arr1);
         printArray(arr1, pen);
 
-
         pen.println("Array 2: ");
         printArray(arr2, pen);
         pen.println("Sorted: ");
         Sorts.quickSort(arr2);
         printArray(arr2, pen);
-
 
         pen.println("Array 3: ");
         printArray(arr3, pen);
