@@ -1,4 +1,5 @@
 package edu.grinnell.sortingvisualizer.events;
+import java.util.ArrayList;
 
 import java.util.List;
 
@@ -15,19 +16,19 @@ public class CopyEvent<T> implements SortEvent<T> {
 
   @Override
   public void apply(T[] arr) {
-    // TODO Auto-generated method stub
-    
+    arr[this.affectIndex]=value;
   }
 
   @Override
   public List<Integer> getAffectedIndices() {
-    // TODO Auto-generated method stub
+    ArrayList<Integer> index= new ArrayList<Integer>();
+    index.add(affectIndex);
     return null;
   }
 
   @Override
   public boolean isEmphasized() {
-    // TODO Auto-generated method stub
-    return false;
+  
+    return this.emphasis;
   }
 }//class CopyEvent

@@ -8,10 +8,11 @@ public class CompareEvent<T> implements SortEvent<T> {
 
     public CompareEvent(List<Integer> affectedIndices) {
        this.affectedIndices = affectedIndices;
+       this.emphasis= false;
     } 
 
     public void apply(T[] arr) {
-        return;
+      return;
     }
 
     public List<Integer> getAffectedIndices() {
