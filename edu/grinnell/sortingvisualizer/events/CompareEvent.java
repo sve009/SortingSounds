@@ -1,8 +1,9 @@
-package edu.grinnell.sortingvisualization.events;
+package edu.grinnell.sortingvisualizer.events;
 
 import java.util.List;
 
 public class CompareEvent<T> implements SortEvent<T> {
+  boolean emphasis;
     public List<Integer> affectedIndices;
 
     public CompareEvent(List<Integer> affectedIndices) {
