@@ -1,5 +1,8 @@
 package edu.grinnell.sortingvisualizer;
 
+import java.util.Random;
+import java.util.ArrayList;
+
 /**
  * A collection of indices into a Scale object.
  * These indices are the subject of the various sorting algorithms
@@ -7,11 +10,18 @@ package edu.grinnell.sortingvisualizer;
  */
 public class NoteIndices {
 
+    Integer[] indices;
+    ArrayList<Integer> highlights;
+
     /**
      * @param n the size of the scale object that these indices map into
      */
     public NoteIndices(int n) {
-        // TODO: fill me in
+        for (int i = 0; i < n; i++) {
+            indices[i] = i;
+        }
+
+        highlights = new ArrayList<Integer>();
     }
     
     /**
@@ -21,13 +31,24 @@ public class NoteIndices {
      * @param n the size of the scale object that these indices map into
      */
     public void initializeAndShuffle(int n) {
-        // TODO: fill me in
+        Random rand = new Random();
+
+        int i1;
+        int i2;
+        for (int i = 0; i < 10 * n; i++) {
+            i1 = rand.nextInt(n);
+            i2 = rand.nextInt(n);
+
+            //Swap
+            int temp = this.indices[i1];
+            indices[i1] = indices[i2];
+            indices[i2] = temp;
+        }
     }
     
     /** @return the indices of this NoteIndices object */
     public Integer[] getNotes() { 
-        // TODO: fill me in
-        return null;
+        return this.indices;
     }
     
     /**
@@ -35,17 +56,18 @@ public class NoteIndices {
      * @param index the index to highlight
      */
     public void highlightNote(int index) {
-        // TODO: fill me in
+        if (!this.isHighlighted(index)) {
+            highlights.add(index);
+        }
     }
     
     /** @return true if the given index is highlighted */
     public boolean isHighlighted(int index) {
-        // TODO: fill me in
-        return false;
+        return highlights.contains(index);
     }
     
     /** Clears all highlighted indices from this collection */
     public void clearAllHighlighted() {
-        // TODO: fill me in
+        highlights.clear();
     }
 }
