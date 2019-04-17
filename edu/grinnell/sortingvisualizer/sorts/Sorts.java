@@ -51,6 +51,14 @@ public class Sorts {
     return events;
   } // selectionSort(T[] arr)
 
+  /**
+   * Just a common insertionSort implementation.
+   * Not super fast or anything.
+   *
+   * @post The array is in order from least to greatest
+   * @post An array of events is returned, the array is
+   *       in the order the events were called in.
+   */
   public static <T extends Comparable<T>> List<SortEvent<T>> insertionSort(T[] arr) {
     int index = 0;
 
@@ -66,6 +74,7 @@ public class Sorts {
       compareIndices.add(index - 1);
       events.add(new CompareEvent<T>(compareIndices));
 
+      //Shift everything over until the element to the left is <= the current
       while (index >= 1 && temp.compareTo(arr[index - 1]) < 0) {
         compareIndices = new ArrayList<Integer>();
         compareIndices.add(index);
@@ -151,6 +160,12 @@ public class Sorts {
 
   }// merge(T[] arr, int leftlb, int mid,int ub, List<SortEvent<T>> events))
 
+  /**
+   * Quicksort implementation.
+   *
+   * @post The array is in order from least to greatest
+   * @post A list of events is returned that is in the same order the events were called in.
+   */
   public static <T extends Comparable<T>> List<SortEvent<T>> quickSort(T[] arr) {
     return quickSort(arr, 0, arr.length, new ArrayList<SortEvent<T>>());
   }
