@@ -1,4 +1,4 @@
-package edu.grinnell.sortingvisualization.events;
+package edu.grinnell.sortingvisualizer.events;
 
 import java.util.List;
 
