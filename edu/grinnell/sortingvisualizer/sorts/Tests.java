@@ -20,6 +20,10 @@ public class Tests {
 
         rearrange(arr5);
 
+        pen.println();
+        pen.println("Testing insertion sort");
+        pen.println();
+
         pen.println("Array 1: ");
         printArray(arr1, pen);
         pen.println("Sorted: ");
@@ -61,6 +65,10 @@ public class Tests {
         Integer[] arr5 = {1, 2, 3, 4, 5};
 
         rearrange(arr5);
+
+        pen.println();
+        pen.println("Testing insertion sort");
+        pen.println();
 
         pen.println("Array 1: ");
         printArray(arr1, pen);
