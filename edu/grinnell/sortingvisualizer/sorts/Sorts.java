@@ -3,7 +3,7 @@ package edu.grinnell.sortingvisualizer.sorts;
 import java.lang.Comparable;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Comparator;
+
 import edu.grinnell.sortingvisualizer.events.SortEvent;
 import edu.grinnell.sortingvisualizer.events.CompareEvent;
 import edu.grinnell.sortingvisualizer.events.SwapEvent;
