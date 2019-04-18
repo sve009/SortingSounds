@@ -125,19 +125,17 @@ public class Sorts {
 
     int i = lb;
 
-    System.out.println(lb + " " + mid + " " + ub);
-
     while (leftP < mid && rightP < ub) {
       ArrayList<Integer> compareIndices = new ArrayList<Integer>();
       compareIndices.add(leftP);
       compareIndices.add(rightP);
       events.add(new CompareEvent<T>(compareIndices));
       if (arr[leftP].compareTo(arr[rightP]) <= 0) {
-        // events.add(new CopyEvent<T>(i));
+        events.add(new CopyEvent<T>(arr[leftP], i));
         copy[i++] = arr[leftP];
         leftP++;
       } else {
-        // events.add(new CopyEvent<T>(i));
+        events.add(new CopyEvent<T>(arr[rightP], i));
         copy[i++] = arr[rightP];
         rightP++;
       }
