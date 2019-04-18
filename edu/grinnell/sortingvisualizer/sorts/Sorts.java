@@ -121,7 +121,7 @@ public class Sorts {
     int leftP = lb;
     int rightP = mid;
 
-    T[] copy = (T[]) new Object[(ub - lb)];
+    T[] copy = arr.clone();
 
     int i = lb;
 
@@ -188,7 +188,7 @@ public class Sorts {
     
     int n = arr.length;
     int newN = 0;
-    while(n <= 1) {
+    do {
         newN = 0;
         for(int i = 1; i < n; i++) {
           //add compare log
@@ -196,14 +196,14 @@ public class Sorts {
           compareIndices.add(i);
           compareIndices.add(i-1);
           events.add(new CompareEvent<T>(compareIndices));
-          if( arr[i].compareTo(arr[i-1]) >0){
+          if( arr[i].compareTo(arr[i-1]) <0){
             events.add(new SwapEvent<T>(compareIndices));
                 swap(arr, i-1, i);
                 newN = i;
             }//if
         }//for
         n = newN; 
-    }//while
+    } while (n >1);// do while
     return events;
   }//bubbleSort(T[] arr)
 
