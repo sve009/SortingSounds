@@ -22,17 +22,15 @@ public class Sorts {
     ArrayList<SortEvent<T>> events = new ArrayList<SortEvent<T>>();
 
     for (int i = 0; i < arr.length - 1; i++) {
-
       int lowestIndex = i;
-      for (int j = i + 1; j < arr.length; j++) {
+      for (int j = i; j < arr.length; j++) {
         // add compare event in log
         ArrayList<Integer> compareIndices = new ArrayList<Integer>();
-        compareIndices.add(i);
+        compareIndices.add(lowestIndex);
         compareIndices.add(j);
         events.add(new CompareEvent<T>(compareIndices));
         // compare i and j
-        if (arr[j].compareTo(arr[i]) < 0) {
-
+        if (arr[j].compareTo(arr[lowestIndex]) < 0) {
           lowestIndex = j;
         } // if
       } // for
@@ -189,10 +187,10 @@ public class Sorts {
     ArrayList<SortEvent<T>> events = new ArrayList<SortEvent<T>>();
     
     int n = arr.length;
-    int newN=0;
-    while(n<=1) {
+    int newN = 0;
+    while(n <= 1) {
         newN = 0;
-        for(int i = 1; i<n;i++) {
+        for(int i = 1; i < n; i++) {
           //add compare log
           ArrayList<Integer> compareIndices = new ArrayList<Integer>();
           compareIndices.add(i);

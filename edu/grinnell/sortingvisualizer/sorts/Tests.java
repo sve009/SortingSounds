@@ -9,6 +9,52 @@ public class Tests {
 
         testInsertionSort(pen);
         testQuickSort(pen);
+        testSelectionSort(pen);
+        testBubbleSort(pen);
+    }
+
+    public static void testBubbleSort(PrintWriter pen) {
+        Integer[] arr1 = {};
+        Integer[] arr2 = {0};
+        Integer[] arr3 = {1, 2, 3, 4, 5};
+        Integer[] arr4 = {5, 4, 3, 2, 1};
+        Integer[] arr5 = {1, 2, 3, 4, 5};
+
+        rearrange(arr5);
+
+        pen.println();
+        pen.println("Testing bubble sort");
+        pen.println();
+
+        pen.println("Array 1: ");
+        printArray(arr1, pen);
+        pen.println("Sorted: ");
+        Sorts.bubbleSort(arr1);
+        printArray(arr1, pen);
+
+        pen.println("Array 2: ");
+        printArray(arr2, pen);
+        pen.println("Sorted: ");
+        Sorts.bubbleSort(arr2);
+        printArray(arr2, pen);
+
+        pen.println("Array 3: ");
+        printArray(arr3, pen);
+        pen.println("Sorted: ");
+        Sorts.bubbleSort(arr3);
+        printArray(arr3, pen);
+        
+        pen.println("Array 4: ");
+        printArray(arr4, pen);
+        pen.println("Sorted: ");
+        Sorts.bubbleSort(arr4);
+        printArray(arr4, pen);
+
+        pen.println("Array 5: ");
+        printArray(arr5, pen);
+        pen.println("Sorted: ");
+        Sorts.bubbleSort(arr5);
+        printArray(arr5, pen);
     }
 
     public static void testInsertionSort(PrintWriter pen) {
@@ -52,6 +98,50 @@ public class Tests {
         printArray(arr5, pen);
         pen.println("Sorted: ");
         Sorts.insertionSort(arr5);
+        printArray(arr5, pen);
+    }
+
+    public static void testSelectionSort(PrintWriter pen) {
+        Integer[] arr1 = {};
+        Integer[] arr2 = {0};
+        Integer[] arr3 = {1, 2, 3, 4, 5};
+        Integer[] arr4 = {5, 4, 3, 2, 1};
+        Integer[] arr5 = {1, 2, 3, 4, 5};
+
+        rearrange(arr5);
+
+        pen.println();
+        pen.println("Testing selection sort");
+        pen.println();
+
+        pen.println("Array 1: ");
+        printArray(arr1, pen);
+        pen.println("Sorted: ");
+        Sorts.selectionSort(arr1);
+        printArray(arr1, pen);
+
+        pen.println("Array 2: ");
+        printArray(arr2, pen);
+        pen.println("Sorted: ");
+        Sorts.selectionSort(arr2);
+        printArray(arr2, pen);
+
+        pen.println("Array 3: ");
+        printArray(arr3, pen);
+        pen.println("Sorted: ");
+        Sorts.selectionSort(arr3);
+        printArray(arr3, pen);
+        
+        pen.println("Array 4: ");
+        printArray(arr4, pen);
+        pen.println("Sorted: ");
+        Sorts.selectionSort(arr4);
+        printArray(arr4, pen);
+
+        pen.println("Array 5: ");
+        printArray(arr5, pen);
+        pen.println("Sorted: ");
+        Sorts.selectionSort(arr5);
         printArray(arr5, pen);
     }
 

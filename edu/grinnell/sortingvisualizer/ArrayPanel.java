@@ -54,7 +54,7 @@ public class ArrayPanel extends JPanel {
                 g.setColor(Color.blue);
             }
 
-            g.fillRect(i * rectWidth, 0, rectWidth, index * rectHeight);
+            g.fillRect(i * rectWidth, (currentNotes.length - index) * rectHeight, rectWidth, index * rectHeight);
         }
     }
 }
