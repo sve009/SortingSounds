@@ -4,10 +4,11 @@ import java.util.List;
 
 public interface SortEvent<T> {
 
-    public void apply(T[] arr);
 
-    public List<Integer> getAffectedIndices();
+  public void apply(T[] arr);
 
-    public boolean isEmphasized();
+  public List<Integer> getAffectedIndices();
+
+  public boolean isEmphasized();
 }
 

@@ -4,30 +4,30 @@ import java.util.List;
 import java.util.Iterator;
 
 public class SwapEvent<T> implements SortEvent<T> {
-    public List<Integer> affectedIndices;
+  public List<Integer> affectedIndices;
 
-    public SwapEvent(List<Integer> affectedIndices) {
-       this.affectedIndices = affectedIndices;
-    } 
+  public SwapEvent(List<Integer> affectedIndices) {
+    this.affectedIndices = affectedIndices;
+  }
 
-    public void apply(T[] arr) {
-        Iterator<Integer> iter = affectedIndices.iterator();
+  public void apply(T[] arr) {
+    Iterator<Integer> iter = affectedIndices.iterator();
 
-        int first = iter.next();
-        int second = iter.next();
-        
-        T temp = arr[first];
+    int first = iter.next();
+    int second = iter.next();
 
-        arr[first] = arr[second];
-        arr[second] = temp;
-    }
+    T temp = arr[first];
 
-    public List<Integer> getAffectedIndices() {
-        return this.affectedIndices;
-    }
+    arr[first] = arr[second];
+    arr[second] = temp;
+  }
 
-    public boolean isEmphasized() {
-        return true;
-    }
+  public List<Integer> getAffectedIndices() {
+    return this.affectedIndices;
+  }
+
+  public boolean isEmphasized() {
+    return true;
+  }
 
 }

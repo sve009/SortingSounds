@@ -4,80 +4,80 @@ import java.util.Random;
 import java.util.ArrayList;
 
 /**
- * A collection of indices into a Scale object.
- * These indices are the subject of the various sorting algorithms
- * in the program.
+ * A collection of indices into a Scale object. These indices are the subject of the various sorting
+ * algorithms in the program.
  */
 public class NoteIndices {
 
-    boolean initialized = false;
-    Integer[] indices;
-    ArrayList<Integer> highlights;
+  boolean initialized = false;
+  Integer[] indices;
+  ArrayList<Integer> highlights;
 
-    /**
-     * @param n the size of the scale object that these indices map into
-     */
-    public NoteIndices(int n) {
-        highlights = new ArrayList<Integer>();
+  /**
+   * @param n the size of the scale object that these indices map into
+   */
+  public NoteIndices(int n) {
+    highlights = new ArrayList<Integer>();
+  }
+
+  public void initialize(int n) {
+    this.indices = new Integer[n];
+
+    for (int i = 0; i < n; i++) {
+      indices[i] = i;
     }
 
-    public void initialize(int n) {
-        this.indices = new Integer[n];
+    this.initialized = true;
+  }
 
-        for (int i = 0; i < n; i++) {
-            indices[i] = i;
-        }
 
-        this.initialized = true;
-    }
+  /**
+   * Reinitializes this collection of indices to map into a new scale object of the given size. The
+   * collection is also shuffled to provide an initial starting point for the sorting process.
+   * 
+   * @param n the size of the scale object that these indices map into
+   */
+  public void initializeAndShuffle(int n) {
+    this.initialize(n);
 
-    
-    /**
-     * Reinitializes this collection of indices to map into a new scale object
-     * of the given size.  The collection is also shuffled to provide an
-     * initial starting point for the sorting process.
-     * @param n the size of the scale object that these indices map into
-     */
-    public void initializeAndShuffle(int n) {
-        this.initialize(n);
+    Random rand = new Random();
 
-        Random rand = new Random();
+    int i1;
+    int i2;
+    for (int i = 0; i < 10 * n; i++) {
+      i1 = rand.nextInt(n);
+      i2 = rand.nextInt(n);
 
-        int i1;
-        int i2;
-        for (int i = 0; i < 10 * n; i++) {
-            i1 = rand.nextInt(n);
-            i2 = rand.nextInt(n);
+      // Swap
+      int temp = this.indices[i1];
+      this.indices[i1] = this.indices[i2];
+      this.indices[i2] = temp;
+    }
+  }
 
-            //Swap
-            int temp = this.indices[i1];
-            this.indices[i1] = this.indices[i2];
-            this.indices[i2] = temp;
-        }
+  /** @return the indices of this NoteIndices object */
+  public Integer[] getNotes() {
+    return this.indices;
+  }
+
+  /**
+   * Highlights the given index of the note array
+   * 
+   * @param index the index to highlight
+   */
+  public void highlightNote(int index) {
+    if (!this.isHighlighted(index)) {
+      highlights.add(index);
     }
-    
-    /** @return the indices of this NoteIndices object */
-    public Integer[] getNotes() { 
-        return this.indices;
-    }
-    
-    /**
-     * Highlights the given index of the note array
-     * @param index the index to highlight
-     */
-    public void highlightNote(int index) {
-        if (!this.isHighlighted(index)) {
-            highlights.add(index);
-        }
-    }
-    
-    /** @return true if the given index is highlighted */
-    public boolean isHighlighted(int index) {
-        return highlights.contains(index);
-    }
-    
-    /** Clears all highlighted indices from this collection */
-    public void clearAllHighlighted() {
-        highlights.clear();
-    }
+  }
+
+  /** @return true if the given index is highlighted */
+  public boolean isHighlighted(int index) {
+    return highlights.contains(index);
+  }
+
+  /** Clears all highlighted indices from this collection */
+  public void clearAllHighlighted() {
+    highlights.clear();
+  }
 }

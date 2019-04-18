@@ -3,7 +3,6 @@ package edu.grinnell.sortingvisualizer.sorts;
 import java.lang.Comparable;
 import java.util.List;
 import java.util.ArrayList;
-
 import edu.grinnell.sortingvisualizer.events.SortEvent;
 import edu.grinnell.sortingvisualizer.events.CompareEvent;
 import edu.grinnell.sortingvisualizer.events.SwapEvent;
@@ -50,12 +49,10 @@ public class Sorts {
   } // selectionSort(T[] arr)
 
   /**
-   * Just a common insertionSort implementation.
-   * Not super fast or anything.
+   * Just a common insertionSort implementation. Not super fast or anything.
    *
    * @post The array is in order from least to greatest
-   * @post An array of events is returned, the array is
-   *       in the order the events were called in.
+   * @post An array of events is returned, the array is in the order the events were called in.
    */
   public static <T extends Comparable<T>> List<SortEvent<T>> insertionSort(T[] arr) {
     int index = 0;
@@ -72,7 +69,7 @@ public class Sorts {
       compareIndices.add(index - 1);
       events.add(new CompareEvent<T>(compareIndices));
 
-      //Shift everything over until the element to the left is <= the current
+      // Shift everything over until the element to the left is <= the current
       while (index >= 1 && temp.compareTo(arr[index - 1]) < 0) {
         compareIndices = new ArrayList<Integer>();
         compareIndices.add(index);
@@ -144,11 +141,11 @@ public class Sorts {
     // Either left or right may have elements left; consume them.
     // (Only one of the following loops will actually be entered.)
     while (leftP < mid) {
-       events.add(new CopyEvent<T>(arr[leftP],i));
+      events.add(new CopyEvent<T>(arr[leftP], i));
       copy[i++] = arr[leftP++];
     }
     while (rightP < ub) {
-      events.add(new CopyEvent<T>(arr[rightP],i));
+      events.add(new CopyEvent<T>(arr[rightP], i));
       copy[i++] = arr[rightP++];
     }
     for (int j = lb; j < ub; j++) {
@@ -184,27 +181,27 @@ public class Sorts {
   // based on wikipedia pseudocode//https://en.wikipedia.org/wiki/Bubble_sort#Optimizing_bubble_sort
   public static <T extends Comparable<T>> List<SortEvent<T>> bubbleSort(T[] arr) {
     ArrayList<SortEvent<T>> events = new ArrayList<SortEvent<T>>();
-    
+
     int n = arr.length;
     int newN = 0;
     do {
-        newN = 0;
-        for(int i = 1; i < n; i++) {
-          //add compare log
-          ArrayList<Integer> compareIndices = new ArrayList<Integer>();
-          compareIndices.add(i);
-          compareIndices.add(i-1);
-          events.add(new CompareEvent<T>(compareIndices));
-          if( arr[i].compareTo(arr[i-1]) <0){
-            events.add(new SwapEvent<T>(compareIndices));
-                swap(arr, i-1, i);
-                newN = i;
-            }//if
-        }//for
-        n = newN; 
-    } while (n >1);// do while
+      newN = 0;
+      for (int i = 1; i < n; i++) {
+        // add compare log
+        ArrayList<Integer> compareIndices = new ArrayList<Integer>();
+        compareIndices.add(i);
+        compareIndices.add(i - 1);
+        events.add(new CompareEvent<T>(compareIndices));
+        if (arr[i].compareTo(arr[i - 1]) < 0) {
+          events.add(new SwapEvent<T>(compareIndices));
+          swap(arr, i - 1, i);
+          newN = i;
+        } // if
+      } // for
+      n = newN;
+    } while (n > 1);// do while
     return events;
-  }//bubbleSort(T[] arr)
+  }// bubbleSort(T[] arr)
 
   public static <T extends Comparable<T>> void eventSort(T[] arr, List<SortEvent<T>> events) {
     for (SortEvent<T> se : events) {
