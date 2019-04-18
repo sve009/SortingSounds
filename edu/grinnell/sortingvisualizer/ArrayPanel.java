@@ -51,7 +51,9 @@ public class ArrayPanel extends JPanel {
             if (notes.isHighlighted(index)) {
                 g.setColor(Color.yellow);
             } else {
-                g.setColor(Color.blue);
+                int value = 256 / currentNotes.length;
+                Color rectColor = new Color(64, 64, index * value); 
+                g.setColor(rectColor);
             }
 
             g.fillRect(i * rectWidth, (currentNotes.length - index) * rectHeight, rectWidth, index * rectHeight);
