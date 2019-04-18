@@ -125,6 +125,8 @@ public class Sorts {
 
     int i = lb;
 
+    System.out.println(lb + " " + mid + " " + ub);
+
     while (leftP < mid && rightP < ub) {
       ArrayList<Integer> compareIndices = new ArrayList<Integer>();
       compareIndices.add(leftP);
