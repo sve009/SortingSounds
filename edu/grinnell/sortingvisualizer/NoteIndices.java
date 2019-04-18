@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class NoteIndices {
 
+    boolean initialized = false;
     Integer[] indices;
     ArrayList<Integer> highlights;
 
@@ -17,12 +18,19 @@ public class NoteIndices {
      * @param n the size of the scale object that these indices map into
      */
     public NoteIndices(int n) {
+        highlights = new ArrayList<Integer>();
+    }
+
+    public void initialize(int n) {
+        this.indices = new Integer[n];
+
         for (int i = 0; i < n; i++) {
             indices[i] = i;
         }
 
-        highlights = new ArrayList<Integer>();
+        this.initialized = true;
     }
+
     
     /**
      * Reinitializes this collection of indices to map into a new scale object
@@ -31,6 +39,8 @@ public class NoteIndices {
      * @param n the size of the scale object that these indices map into
      */
     public void initializeAndShuffle(int n) {
+        this.initialize(n);
+
         Random rand = new Random();
 
         int i1;
@@ -41,8 +51,8 @@ public class NoteIndices {
 
             //Swap
             int temp = this.indices[i1];
-            indices[i1] = indices[i2];
-            indices[i2] = temp;
+            this.indices[i1] = this.indices[i2];
+            this.indices[i2] = temp;
         }
     }
     

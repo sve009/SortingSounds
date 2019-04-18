@@ -11,8 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
-import edu.grinnell.sortingvisualizer.sortevents.CompareEvent;
-import edu.grinnell.sortingvisualizer.sortevents.SortEvent;
+import edu.grinnell.sortingvisualizer.events.CompareEvent;
+import edu.grinnell.sortingvisualizer.events.SortEvent;
 import edu.grinnell.sortingvisualizer.sorts.Sorts;
 
 /**
@@ -141,8 +141,13 @@ public class ControlPanel extends JPanel {
                 // TODO: fill me in
                 // 1. Create the sorting events list
                 // 2. Add in the compare events to the end of the list
-                List<SortEvent<Integer>> events = new java.util.LinkedList<>();
-                
+                final List<SortEvent<Integer>> events = generateEvents(sorts.getSelectedItem().toString(), notes.getNotes().clone());
+                //for (SortEvent<Integer> event : events) {
+                //    if (event instanceof CompareEvent) {
+                //        events.add(event);
+                //    }
+                //}
+
                 // NOTE: The Timer class repetitively invokes a method at a
                 //       fixed interval.  Here we are specifying that method
                 //       by creating an _anonymous subclass_ of the TimeTask
@@ -155,13 +160,18 @@ public class ControlPanel extends JPanel {
                     
                     @Override
                     public void run() {
+                        notes.clearAllHighlighted();
                         if (index < events.size()) {
                             SortEvent<Integer> e = events.get(index++);
-                            // TODO: fill me in
                             // 1. Apply the next sort event.
+                            e.apply(notes.getNotes());
                             // 3. Play the corresponding notes denoted by the
                             //    affected indices logged in the event.
                             // 4. Highlight those affected indices.
+                            for (int i : e.getAffectedIndices()) {
+                                notes.highlightNote(i);
+                                scale.playNote(i, e.isEmphasized());
+                            }
                             panel.repaint();
                         } else {
                             this.cancel();
