@@ -109,8 +109,8 @@ public class Sorts {
       // Recursive case. First, divide the list into equal-sized sublists
       // consisting of the first half and second half of the list.
       // This assumes lists start at index 0.
-      int half = ub + (lb - ub) / 2;
-      mergeSort(arr, 0, half, events);
+      int half = lb + (ub - lb) / 2;
+      mergeSort(arr, lb, half, events);
       mergeSort(arr, half, ub, events);
       merge(arr, lb, half, ub, events);
     }
@@ -144,16 +144,15 @@ public class Sorts {
     // Either left or right may have elements left; consume them.
     // (Only one of the following loops will actually be entered.)
     while (leftP < mid) {
-      // events.add(new CopyEvent<T>(i));
+       events.add(new CopyEvent<T>(arr[leftP],i));
       copy[i++] = arr[leftP++];
     }
     while (rightP < ub) {
-      // events.add(new CopyEvent<T>(i));
-      copy[i++] = arr[rightP];
+      events.add(new CopyEvent<T>(arr[rightP],i));
+      copy[i++] = arr[rightP++];
     }
-    for (int j = 0; j < (ub - lb); j++) {
-      //events.add(new CopyEvent<T>((lb + j)));
-      arr[lb + j] = copy[j];
+    for (int j = lb; j < ub; j++) {
+      arr[j] = copy[j];
     } // for
 
   }// merge(T[] arr, int leftlb, int mid,int ub, List<SortEvent<T>> events))
