@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -141,12 +142,13 @@ public class ControlPanel extends JPanel {
                 // TODO: fill me in
                 // 1. Create the sorting events list
                 // 2. Add in the compare events to the end of the list
-                final List<SortEvent<Integer>> events = generateEvents(sorts.getSelectedItem().toString(), notes.getNotes().clone());
-                //for (SortEvent<Integer> event : events) {
-                //    if (event instanceof CompareEvent) {
-                //        events.add(event);
-                //    }
-                //}
+                List<SortEvent<Integer>> events = generateEvents(sorts.getSelectedItem().toString(), notes.getNotes().clone());
+                for (int i = 1; i < notes.getNotes().length; i++) {
+                    ArrayList<Integer> indices = new ArrayList<Integer>();
+                    indices.add(i - 1);
+                    indices.add(i);
+                    events.add(new CompareEvent<Integer>(indices));
+                }
 
                 // NOTE: The Timer class repetitively invokes a method at a
                 //       fixed interval.  Here we are specifying that method
